@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.App"
+             xmlns:views="clr-namespace:Quan_ly_project.Views">
+
+    <Application.MainPage>
+        <Shell BackgroundColor="White">
+            <ShellItem Route="LoginPage">
+                <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" />
+            </ShellItem>
+            <ShellItem Route="RegisterPage">
+                <ShellContent ContentTemplate="{DataTemplate views:RegisterPage}" />
+            </ShellItem>
+            <ShellItem Route="HomePage">
+                <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
+            </ShellItem>
+        </Shell>
+    </Application.MainPage>
+</Application>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.Views.TaskPage"
+             BackgroundColor="White"
+             Title="Quản lý Nhiệm Vụ">
+
+    <ScrollView Padding="10">
+
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Tiêu đề -->
+            <Label Text="Danh Sách Nhiệm Vụ"
+                   FontSize="24"
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
+
+            <!-- Danh sách nhiệm vụ -->
+            <ListView x:Name="TaskListView"
+                      ItemsSource="{Binding Tasks}"
+                      HasUnevenRows="True"
+                      Margin="0,20">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+                                <!-- Task Info -->
+                                <Label Text="{Binding Name}" FontSize="18" TextColor="Black" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" Grid.Row="1" Grid.Column="0" />
+                                <Label Text="{Binding Status}" FontSize="14" TextColor="Gray" Grid.Row="2" Grid.Column="0" />
+                                <Label Text="{Binding ProgressPercent, StringFormat='{0}%'}" FontSize="14" TextColor="Gray" Grid.Row="3" Grid.Column="0" />
+                                <Label Text="{Binding Deadline, StringFormat='{0:MM/dd/yyyy}'}" FontSize="14" TextColor="Gray" Grid.Row="4" Grid.Column="0" />
+                                <Label Text="{Binding CreatedAt, StringFormat='{0:MM/dd/yyyy HH:mm}'}" FontSize="14" TextColor="Gray" Grid.Row="5" Grid.Column="0" />
+
+                                <!-- Nút chỉnh sửa nhiệm vụ -->
+                                <Button Text="Chỉnh sửa"
+                                        BackgroundColor="#FF9800"
+                                        TextColor="White"
+                                        Command="{Binding BindingContext.EditTaskCommand, Source={x:Reference TaskListView}}"
+                                        CommandParameter="{Binding}" Grid.Row="0" Grid.Column="1" />
+
+                                <!-- Nút xóa nhiệm vụ -->
+                                <Button Text="Xóa"
+                                        BackgroundColor="#F44336"
+                                        TextColor="White"
+                                        Command="{Binding BindingContext.DeleteTaskCommand, Source={x:Reference TaskListView}}"
+                                        CommandParameter="{Binding TaskId}" Grid.Row="1" Grid.Column="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Nút thêm nhiệm vụ -->
+            <Button Text="Thêm Nhiệm Vụ"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Command="{Binding AddTaskCommand}" />
+
+
+            <!-- Nút xóa tất cả nhiệm vụ -->
+            <Button Text="Xóa Tất Cả Nhiệm Vụ"
+                    BackgroundColor="#D32F2F"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Command="{Binding DeleteAllTasksCommand}" />
+
+            <!-- Nút quay lại -->
+            <Button Text="Quay lại"
+                    BackgroundColor="#F44336"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Command="{Binding GoBackCommand}" />
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

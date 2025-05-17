@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.Views.HomePage"
+             BackgroundColor="#f8f8f8"
+             Title="Trang Chủ">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="40,60,40,40">
+
+            <!-- Tiêu đề chào mừng người dùng -->
+            <Label Text="Chào mừng đến với Quan Lý Phần Mềm!"
+                   FontSize="26"
+                   HorizontalOptions="Center"
+                   TextColor="#4CAF50"
+                   FontAttributes="Bold" />
+
+            <!-- Danh sách dự án -->
+            <Frame BorderColor="#4CAF50"
+                   CornerRadius="15"
+                   HasShadow="True"
+                   Padding="10"
+                   BackgroundColor="White">
+                <ListView x:Name="ProjectsListView"
+                          ItemsSource="{Binding Projects}"
+                          Margin="0,20"
+                          HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Name}" FontSize="18" TextColor="Black" />
+                                    <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+
+            <!-- Nút điều hướng đến Project -->
+            <Button Text="Quản lý Dự Án"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    FontSize="18"
+                    Command="{Binding NavigateToProjectCommand}" />
+
+            <!-- Nút điều hướng đến ProjectMember -->
+            <Button Text="Quản lý Thành Viên Dự Án"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    FontSize="18"
+                    Command="{Binding NavigateToProjectMemberCommand}" />
+
+            <!-- Nút điều hướng đến Task -->
+            <Button Text="Quản lý Nhiệm Vụ"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    FontSize="18"
+                    Command="{Binding NavigateToTaskCommand}" />
+
+            <!-- Nút đăng xuất -->
+            <Button Text="Đăng Xuất"
+                    BackgroundColor="#F44336"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    FontSize="18"
+                    Command="{Binding LogoutCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

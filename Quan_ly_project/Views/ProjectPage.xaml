@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.Views.ProjectPage"
+             BackgroundColor="White"
+             Title="Quản lý Dự Án">
+
+    <VerticalStackLayout Spacing="20" Padding="30">
+
+        <!-- Tiêu đề -->
+        <Label Text="Danh Sách Dự Án"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="Black" />
+
+        <!-- Danh sách các dự án -->
+        <ListView x:Name="ProjectListView"
+                   ItemsSource="{Binding Projects}"
+                  HasUnevenRows="True"
+                  Margin="0,20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <!-- Tên dự án -->
+                            <Label Text="{Binding Name}" FontSize="18" TextColor="Black" />
+
+                            <!-- Mô tả dự án -->
+                            <Label Text="{Binding Description}" FontSize="14" TextColor="Gray" />
+
+                            <!-- Ngày bắt đầu -->
+                            <Label Text="{Binding StartDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="Gray" />
+
+                            <!-- Ngày kết thúc -->
+                            <Label Text="{Binding EndDate, StringFormat='{0:dd/MM/yyyy}'}" FontSize="14" TextColor="Gray" />
+
+                            <!-- Nút chỉnh sửa dự án -->
+                            <Button Text="Chỉnh sửa"
+                                    BackgroundColor="#FF9800"
+                                    TextColor="White"
+                                    Command="{Binding BindingContext.EditProjectCommand, Source={x:Reference ProjectListView}}"
+                                    CommandParameter="{Binding}" />
+
+                            <!-- Nút xóa dự án -->
+                            <Button Text="Xóa"
+                                    BackgroundColor="#F44336"
+                                    TextColor="White"
+                                    Command="{Binding BindingContext.DeleteProjectCommand, Source={x:Reference ProjectListView}}"
+                                    CommandParameter="{Binding ProjectId}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Nút thêm dự án -->
+        <Button Text="Thêm Dự Án"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                Command="{Binding AddProjectCommand}" />
+
+        <!-- Nút quay lại -->
+        <Button Text="Quay lại"
+                BackgroundColor="#F44336"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                Command="{Binding GoBackCommand}" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

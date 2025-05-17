@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.Views.ProjectMemberPage"
+             BackgroundColor="White"
+             Title="Quản lý Thành Viên Dự Án">
+
+    <VerticalStackLayout Spacing="20" Padding="30">
+
+        <!-- Tiêu đề -->
+        <Label Text="Danh Sách Thành Viên"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="Black" />
+
+        <!-- Danh sách thành viên -->
+        <ListView x:Name="MembersListView"
+                  ItemsSource="{Binding Members}"
+                  HasUnevenRows="True"
+                  Margin="0,20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding UserName}" FontSize="18" TextColor="Black" />
+                            <Label Text="{Binding Role}" FontSize="14" TextColor="Gray" />
+                            <Label Text="{Binding JoinedAt, StringFormat='{0:MM/dd/yyyy}'}" FontSize="14" TextColor="Gray" />
+
+                            <!-- Nút chỉnh sửa thành viên -->
+                            <Button Text="Chỉnh sửa"
+                                    BackgroundColor="#FF9800"
+                                    TextColor="White"
+                                    Command="{Binding BindingContext.EditMemberCommand, Source={x:Reference MembersListView}}"
+                                    CommandParameter="{Binding}" />
+
+                            <!-- Nút xóa thành viên -->
+                            <Button Text="Xóa"
+                                    BackgroundColor="#F44336"
+                                    TextColor="White"
+                                    Command="{Binding BindingContext.RemoveMemberCommand, Source={x:Reference MembersListView}}"
+                                    CommandParameter="{Binding UserId}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Nút thêm thành viên -->
+        <Button Text="Thêm Thành Viên"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                Command="{Binding AddMemberCommand}" />
+
+        <!-- Nút quay lại -->
+        <Button Text="Quay lại"
+                BackgroundColor="#F44336"
+                TextColor="White"
+                CornerRadius="10"
+                HeightRequest="50"
+                Command="{Binding GoBackCommand}" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

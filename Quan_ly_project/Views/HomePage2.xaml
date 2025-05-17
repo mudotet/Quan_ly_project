@@ -1,0 +1,90 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.Views.HomePage2"
+             BackgroundColor="#f8f8f8"
+             Title="Trang Chủ">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="40,60,40,40">
+
+            <!-- Tiêu đề chào mừng người dùng -->
+            <Label Text="Chào mừng đến với Quan Lý Phần Mềm!"
+                   FontSize="26"
+                   HorizontalOptions="Center"
+                   TextColor="#4CAF50"
+                   FontAttributes="Bold" />
+
+            <!-- Nút điều hướng đến Project -->
+            <Frame BorderColor="#4CAF50"
+                   BackgroundColor="#4CAF50"
+                   CornerRadius="10"
+                   Padding="15"
+                   HasShadow="True"
+                   Margin="0, 10">
+                <Label Text="Quản lý Dự Án"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       FontSize="18">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToProjectCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+
+            <!-- Nút điều hướng đến ProjectMember -->
+            <Frame BorderColor="#4CAF50"
+                   BackgroundColor="#4CAF50"
+                   CornerRadius="10"
+                   Padding="15"
+                   HasShadow="True"
+                   Margin="0, 10">
+                <Label Text="Quản lý Thành Viên Dự Án"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       FontSize="18">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToProjectMemberCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+
+            <!-- Nút điều hướng đến Task -->
+            <Frame BorderColor="#4CAF50"
+                   BackgroundColor="#4CAF50"
+                   CornerRadius="10"
+                   Padding="15"
+                   HasShadow="True"
+                   Margin="0, 10">
+                <Label Text="Quản lý Nhiệm Vụ"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       FontSize="18">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToTaskCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+
+            <!-- Nút đăng xuất -->
+            <Frame BorderColor="#F44336"
+                   BackgroundColor="#F44336"
+                   CornerRadius="10"
+                   Padding="15"
+                   HasShadow="True"
+                   Margin="0, 10">
+                <Label Text="Đăng Xuất"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       TextColor="White"
+                       FontSize="18">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

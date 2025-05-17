@@ -1,0 +1,68 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Quan_ly_project.Views.LoginPage"
+             BackgroundColor="#f1f1f1"
+             Title="Đăng Nhập">
+
+    <VerticalStackLayout Spacing="20" Padding="40,60,40,40">
+
+        <!-- Tiêu đề đăng nhập -->
+        <Label Text="Chào mừng đến với Ứng dụng"
+               FontSize="24"
+               HorizontalOptions="Center"
+               TextColor="#4CAF50" />
+
+        <!-- Tên người dùng -->
+        <Frame BorderColor="#4CAF50"
+               CornerRadius="20"
+               HasShadow="True"
+               Padding="10"
+               BackgroundColor="White">
+            <Entry x:Name="UsernameEntry"
+                   Text="{Binding Username}" 
+                Placeholder="Tên người dùng"
+                   Keyboard="Text"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="Black"
+                   HeightRequest="50"
+                   FontSize="16"/>
+        </Frame>
+
+        <!-- Mật khẩu -->
+        <Frame BorderColor="#4CAF50"
+               CornerRadius="20"
+               HasShadow="True"
+               Padding="10"
+               BackgroundColor="White">
+            <Entry x:Name="PasswordEntry"
+                   Text="{Binding Password}"
+                Placeholder="Mật khẩu"
+                   IsPassword="True"
+                   HorizontalOptions="FillAndExpand"
+                   TextColor="Black"
+                   HeightRequest="50"
+                   FontSize="16"/>
+        </Frame>
+
+        <!-- Nút đăng nhập -->
+        <Button Text="Đăng Nhập"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                CornerRadius="20"
+                HeightRequest="50"
+                FontSize="18"
+                Command="{Binding LoginCommand}" />
+
+        <!-- Liên kết đến trang đăng ký -->
+        <Label Text="Chưa có tài khoản? Đăng ký"
+               TextColor="#4CAF50"
+               HorizontalOptions="Center"
+               Padding="10"
+               FontSize="16">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}" />
+            </Label.GestureRecognizers>
+        </Label>
+
+    </VerticalStackLayout>
+</ContentPage>
